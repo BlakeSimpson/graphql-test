@@ -26,5 +26,6 @@ module GraphqlTest
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app/graph')
     config.autoload_paths << Rails.root.join('app/graph/types')
+    config.autoload_paths << Rails.root.join('app/graph/connections')
   end
 end

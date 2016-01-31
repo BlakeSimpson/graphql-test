@@ -1,12 +1,14 @@
 class ExplorerExamples
   EXAMPLES = [
     {
-      name: 'Get Book query',
+      name: 'View a book',
       query: %q(
 query getBook {
   book(id: 2) {
     ...getDetails
     price
+    genre
+    inStock: in_stock
     author {
       total_books
     }
@@ -20,7 +22,22 @@ fragment getDetails on Book {
       )
     },
     {
-      name: 'Edit Book name',
+      name: 'List all books',
+      query: %q(
+{
+  books {
+    edges {
+      node {
+        id, name
+        author { name }
+      }
+    }
+  }
+}
+      )
+    },
+    {
+      name: 'Edit a book name',
       query: %q(
 mutation {
   editBook(input: {id: 2, name: "Updated book name", clientMutationId: 1}) {
@@ -28,6 +45,16 @@ mutation {
       id
       name
     }
+  }
+}
+      )
+    },
+    {
+      name: 'Reflect schema',
+      query: %q(
+{
+  __schema {
+    types { name, fields { name } }
   }
 }
       )
