@@ -1,0 +1,9 @@
+.select-wrapper
+  %select{name: :examples}
+    - ExplorerExamples.all_examples.each_with_index do |example, index|
+      %option{name: "example_#{index}"}= example[:name]
+
+
+.hidden
+  - ExplorerExamples.all_examples.each_with_index do |example, index|
+    %span{id: "example_#{index}"}= example[:query]

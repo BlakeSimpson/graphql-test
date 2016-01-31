@@ -1,0 +1,36 @@
+.explorer
+  .input
+    = render partial: 'examples'
+
+    %form{action: '/graph.text', method: :post}
+      = find_and_preserve explorer_textarea
+      %input{type: :submit, value: 'Send'}
+
+  .output
+    .intro
+      %p Type a query and press "Send" to see the results
+      %h3 Schema
+
+      %ul
+        %li
+          Book
+          %ul
+            %li id
+            %li name
+            %li genre
+            %li in_stock
+            %li price
+            %li pages
+            %li created_at
+            %li.assoc author
+        %li
+          Author
+          %ul
+            %li id
+            %li name
+            %li total_books
+            %li created_at
+
+
+
+%script{:src => "https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"}
